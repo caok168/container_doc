@@ -8,7 +8,7 @@
 进程的CPU使用率=((utime_2-utime_1) + (stime_2-stime_1)) * 100.0/(HZ * et * 1)
 
 ### 系统CPU使用率
-对于整个系统的CPU使用率，这个文件就是 /proc/stat 。
+对于整个系统的CPU使用率，这个文件就是 **/proc/stat** 。
 
 对于单个进程的CPU使用率，需要读取对应进程的 /proc/[pid]/stat文件，将进程瞬时用户态和内核态的ticks数相加，就能得到进程的总ticks。
 
@@ -16,7 +16,7 @@
 (进程的ticks / 单个CPU总ticks) * 100
 
 
-我们可以从每个容器的CPU Cgroup控制组里的cpuacct.stat的统计值中，可以比较快速地得到整个容器的CPU使用率。
+我们可以从每个容器的CPU Cgroup控制组里的**cpuacct.stat**的统计值中，可以比较快速地得到整个容器的CPU使用率。
 
 由于/proc/stat文件是整个节点全局的状态文件，不属于任何一个Namespace，因此在容器中无法通过读取/proc/stat文件来获取单个容器的CPU使用率。
 
